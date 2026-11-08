@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|c:\\users\\aid\\desktop\\sve\\github\\volleyball_stat_tracker\\volleyball_stat_tracker\\volleyball_stat_tracker\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|solutionrelative:volleyball_stat_tracker\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|c:\\users\\aid\\desktop\\sve\\github\\volleyball_stat_tracker\\volleyball_stat_tracker\\volleyball_stat_tracker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|solutionrelative:volleyball_stat_tracker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|c:\\users\\aid\\desktop\\sve\\github\\volleyball_stat_tracker\\volleyball_stat_tracker\\volleyball_stat_tracker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{67DBA64E-F912-F856-1C5F-31340F07E227}|Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker.csproj|solutionrelative:volleyball_stat_tracker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Player.cs",
+              "RelativeDocumentMoniker": "Volleyball_Stat_Tracker\\Player.cs",
+              "ToolTip": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Player.cs",
+              "RelativeToolTip": "Volleyball_Stat_Tracker\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-08T14:00:41.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Volleyball_Stat_Tracker\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\MainWindow.xaml",
+              "RelativeToolTip": "Volleyball_Stat_Tracker\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-19T15:43:06.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Volleyball_Stat_Tracker\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Aid\\Desktop\\Sve\\GitHub\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\Volleyball_Stat_Tracker\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Volleyball_Stat_Tracker\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T15:43:01.163Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
