@@ -16,9 +16,22 @@ namespace Volleyball_Stat_Tracker
     /// </summary>
     public partial class MainWindow : Window
     {
+        Player player = new Player();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void DodajIgraca()
+        {
+            if (this.player != null)
+            {
+                player.imeIgraca = TxtIme.Text;
+                player.godineIgraca = int.Parse(TxtGodine.Text);
+                player.minutazaIgraca = int.Parse(TxtMinutaza.Text);
+                player.brojPoena = int.Parse(TxtPoeni.Text);
+                player.imeKluba = TxtKlub.Text;
+            }
         }
     }
 }
