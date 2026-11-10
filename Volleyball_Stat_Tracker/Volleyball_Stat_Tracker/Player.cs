@@ -10,7 +10,7 @@ class Player
 
     public string imeKluba { get; set; }
 
-    public Player() { }
+    //public Player() { }
 
     public Player(string _imeIgraca, int _godIgraca, int _minutazaIgraca, int _brojPoena, string _imeKluba)
     {
@@ -19,5 +19,11 @@ class Player
         minutazaIgraca = _minutazaIgraca;
         brojPoena = _brojPoena;
         imeKluba = _imeKluba;
+    }
+
+    public string Ispis()
+    {
+        string text = $"Klub: {imeKluba} | Godine: {godineIgraca} | Minutaza: {minutazaIgraca} | Poeni: {brojPoena}";
+        return text ;
     }
 }

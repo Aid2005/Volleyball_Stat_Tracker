@@ -43,6 +43,7 @@
 
         <!-- Add Button -->
         <Button Grid.Row="2" 
+                Click="DodajIgraca"
                 x:Name="BtnDodaj" 
                 Content="Dodaj" 
                 Height="38" 
@@ -52,16 +53,22 @@
                 FontSize="14"
                 Margin="0,0,0,20"/>
 
-        <!-- Section Subtitle -->
+        <!-- Section Subtitle (Skriveno dok se ne doda prvi igrač) -->
         <TextBlock Grid.Row="3" 
+                   x:Name="TxtNaslovListe"
+                   Visibility="Collapsed"
                    Text="Lista igrača" 
                    FontSize="18" 
                    FontWeight="SemiBold" 
                    Margin="0,0,0,10" 
                    Foreground="#34495E"/>
 
-        <!-- Player List with Dummy Data -->
-        <ListView Grid.Row="4" x:Name="LstIgraci" Background="White" HorizontalContentAlignment="Stretch">
+        <!-- Player List (Skriveno dok se ne doda prvi igrač) -->
+        <ListView Grid.Row="4" 
+                  x:Name="LstIgraci" 
+                  Visibility="Collapsed"
+                  Background="White" 
+                  HorizontalContentAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5">
@@ -70,56 +77,40 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Mock Data Row 1 (Visual Preview) -->
+                        <!-- Podaci o igraču (Kolona 0) -->
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding Ime, FallbackValue='Marko Marković'}" FontWeight="Bold" FontSize="14"/>
+                            <TextBlock Text="{Binding imeIgraca}" FontWeight="Bold" FontSize="14"/>
                             <TextBlock FontSize="12" Foreground="#555">
-                                <Run Text="Klub: "/><Run Text="{Binding Klub, FallbackValue='OK Bosna'}"/>
-                                <Run Text=" | Godine: "/><Run Text="{Binding Godine, FallbackValue='24'}"/>
-                                <Run Text=" | Minuta: "/><Run Text="{Binding Minutaza, FallbackValue='120'}"/>
-                                <Run Text=" | Poeni: "/><Run Text="{Binding Poeni, FallbackValue='45'}"/>
+                                <Run Text="Klub: "/><Run Text="{Binding imeKluba}"/>
+                                <Run Text=" | Godine: "/><Run Text="{Binding godineIgraca}"/>
+                                <Run Text=" | Minuta: "/><Run Text="{Binding minutazaIgraca}"/>
+                                <Run Text=" | Poeni: "/><Run Text="{Binding brojPoena}"/>
                             </TextBlock>
                         </StackPanel>
 
-                        <Button Grid.Column="1" 
-                                Content="Update" 
-                                Padding="12,6" 
-                                VerticalAlignment="Center" 
-                                Background="#2980B9" 
-                                Foreground="White" 
-                                FontWeight="Bold"/>
+                        <!-- Akcijska dugmad (Kolona 1) -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <Button x:Name="ubutton"
+                                    Content="Update" 
+                                    Padding="10,5" 
+                                    Margin="0,0,5,0"
+                                    VerticalAlignment="Center" 
+                                    Background="#2980B9" 
+                                    Foreground="White" 
+                                    FontWeight="Bold"/>
+
+                            <Button x:Name="dbutton"
+                                    Click="Brisanje"
+                                    Content="Delete" 
+                                    Padding="10,5" 
+                                    VerticalAlignment="Center" 
+                                    Background="#E74C3C" 
+                                    Foreground="White" 
+                                    FontWeight="Bold"/>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
-            <!-- Dummy items for visual structure in XAML -->
-            <ListViewItem>
-                <Grid HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="Marko Marković" FontWeight="Bold" FontSize="14"/>
-                        <TextBlock Text="Klub: OK Bosna | Godine: 24 | Minuta: 120 | Poeni: 45" FontSize="12" Foreground="#555"/>
-                    </StackPanel>
-                    <Button Grid.Column="1" Content="Update" Padding="12,6" VerticalAlignment="Center" Background="#2980B9" Foreground="White" FontWeight="Bold"/>
-                </Grid>
-            </ListViewItem>
-
-            <ListViewItem>
-                <Grid HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="Petar Petrović" FontWeight="Bold" FontSize="14"/>
-                        <TextBlock Text="Klub: OK Mladost | Godine: 21 | Minuta: 95 | Poeni: 28" FontSize="12" Foreground="#555"/>
-                    </StackPanel>
-                    <Button Grid.Column="1" Content="Update" Padding="12,6" VerticalAlignment="Center" Background="#2980B9" Foreground="White" FontWeight="Bold"/>
-                </Grid>
-            </ListViewItem>
         </ListView>
     </Grid>
 </Window>
