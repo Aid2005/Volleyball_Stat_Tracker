@@ -1,29 +1,30 @@
 ﻿using System;
-namespace Volleyball_Stat_Tracker;
 
-class Player
+namespace Volleyball_Stat_Tracker
 {
-    public string imeIgraca { get; set; }
-    public int godineIgraca { get; set; }
-    public int minutazaIgraca { get; set; }
-    public int brojPoena { get; set; }
-
-    public string imeKluba { get; set; }
-
-    //public Player() { }
-
-    public Player(string _imeIgraca, int _godIgraca, int _minutazaIgraca, int _brojPoena, string _imeKluba)
+    class Player
     {
-        imeIgraca = _imeIgraca;
-        godineIgraca = _godIgraca;
-        minutazaIgraca = _minutazaIgraca;
-        brojPoena = _brojPoena;
-        imeKluba = _imeKluba;
-    }
+        public string PlayerName { get; set; }
+        public int PlayerAge { get; set; }
+        public int PlayerMinutes { get; set; }
+        public int Points { get; set; }
+        public string ClubName { get; set; }
 
-    public string Ispis()
-    {
-        string text = $"Klub: {imeKluba} | Godine: {godineIgraca} | Minutaza: {minutazaIgraca} | Poeni: {brojPoena}";
-        return text ;
+        public Player() { }
+
+        public Player(string _playerName, int _playerAge, int _playerMinutes, int _points, string _clubName)
+        {
+            PlayerName = _playerName;
+            PlayerAge = _playerAge;
+            PlayerMinutes = _playerMinutes;
+            Points = _points;
+            ClubName = _clubName;
+        }
+
+        public string PrintInfo()
+        {
+            string text = $"Club: {ClubName} | Age: {PlayerAge} | Minutes: {PlayerMinutes} | Points: {Points}";
+            return text;
+        }
     }
 }

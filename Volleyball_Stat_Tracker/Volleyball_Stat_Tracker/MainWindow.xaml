@@ -24,28 +24,28 @@
         <!-- Input Form -->
         <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,15">
             <StackPanel>
-                <TextBlock Text="Ime igrača" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
-                <TextBox x:Name="TxtIme" Margin="0,0,0,10" Padding="6"/>
+                <TextBlock Text="Player Name" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
+                <TextBox x:Name="TxtName" Margin="0,0,0,10" Padding="6"/>
 
-                <TextBlock Text="Godine igrača" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
-                <TextBox x:Name="TxtGodine" Margin="0,0,0,10" Padding="6"/>
+                <TextBlock Text="Player Age" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
+                <TextBox x:Name="TxtAge" Margin="0,0,0,10" Padding="6"/>
 
-                <TextBlock Text="Minutaža igrača" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
-                <TextBox x:Name="TxtMinutaza" Margin="0,0,0,10" Padding="6"/>
+                <TextBlock Text="Player Minutes" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
+                <TextBox x:Name="TxtMinutes" Margin="0,0,0,10" Padding="6"/>
 
-                <TextBlock Text="Broj poena" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
-                <TextBox x:Name="TxtPoeni" Margin="0,0,0,10" Padding="6"/>
+                <TextBlock Text="Points" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
+                <TextBox x:Name="TxtPoints" Margin="0,0,0,10" Padding="6"/>
 
-                <TextBlock Text="Ime kluba" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
-                <TextBox x:Name="TxtKlub" Margin="0,0,0,5" Padding="6"/>
+                <TextBlock Text="Club Name" Margin="0,0,0,3" FontSize="12" Foreground="#666"/>
+                <TextBox x:Name="TxtClub" Margin="0,0,0,5" Padding="6"/>
             </StackPanel>
         </Border>
 
         <!-- Add Button -->
         <Button Grid.Row="2" 
-                Click="DodajIgraca"
-                x:Name="BtnDodaj" 
-                Content="Dodaj" 
+                Click="AddPlayer"
+                x:Name="BtnAdd" 
+                Content="Add Player"
                 Height="38" 
                 Background="#27AE60" 
                 Foreground="White" 
@@ -53,19 +53,19 @@
                 FontSize="14"
                 Margin="0,0,0,20"/>
 
-        <!-- Section Subtitle (Skriveno dok se ne doda prvi igrač) -->
+        <!-- Section Subtitle -->
         <TextBlock Grid.Row="3" 
-                   x:Name="TxtNaslovListe"
+                   x:Name="TxtListTitle"
                    Visibility="Collapsed"
-                   Text="Lista igrača" 
+                   Text="Player List" 
                    FontSize="18" 
                    FontWeight="SemiBold" 
                    Margin="0,0,0,10" 
                    Foreground="#34495E"/>
 
-        <!-- Player List (Skriveno dok se ne doda prvi igrač) -->
+        <!-- Player List -->
         <ListView Grid.Row="4" 
-                  x:Name="LstIgraci" 
+                  x:Name="LstPlayers" 
                   Visibility="Collapsed"
                   Background="White" 
                   HorizontalContentAlignment="Stretch">
@@ -77,20 +77,21 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Podaci o igraču (Kolona 0) -->
+                        <!-- Player Info (Column 0) -->
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding imeIgraca}" FontWeight="Bold" FontSize="14"/>
+                            <TextBlock Text="{Binding PlayerName}" FontWeight="Bold" FontSize="14"/>
                             <TextBlock FontSize="12" Foreground="#555">
-                                <Run Text="Klub: "/><Run Text="{Binding imeKluba}"/>
-                                <Run Text=" | Godine: "/><Run Text="{Binding godineIgraca}"/>
-                                <Run Text=" | Minuta: "/><Run Text="{Binding minutazaIgraca}"/>
-                                <Run Text=" | Poeni: "/><Run Text="{Binding brojPoena}"/>
+                                <Run Text="Club: "/><Run Text="{Binding ClubName}"/>
+                                <Run Text=" | Age: "/><Run Text="{Binding PlayerAge}"/>
+                                <Run Text=" | Minutes: "/><Run Text="{Binding PlayerMinutes}"/>
+                                <Run Text=" | Points: "/><Run Text="{Binding Points}"/>
                             </TextBlock>
                         </StackPanel>
 
-                        <!-- Akcijska dugmad (Kolona 1) -->
+                        <!-- Action Buttons (Column 1) -->
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Button x:Name="ubutton"
+                            <Button x:Name="BtnUpdate"
+                                    Click="UpdatePlayer"
                                     Content="Update" 
                                     Padding="10,5" 
                                     Margin="0,0,5,0"
@@ -99,8 +100,8 @@
                                     Foreground="White" 
                                     FontWeight="Bold"/>
 
-                            <Button x:Name="dbutton"
-                                    Click="Brisanje"
+                            <Button x:Name="BtnDelete"
+                                    Click="DeletePlayer"
                                     Content="Delete" 
                                     Padding="10,5" 
                                     VerticalAlignment="Center" 

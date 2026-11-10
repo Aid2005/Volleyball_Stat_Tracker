@@ -1,82 +1,135 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Volleyball_Stat_Tracker
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        List<Player> lisPlayer = new List<Player> { };
+        List<Player> playerList = new List<Player>();
+        Player selectedPlayer = null;
+        private readonly string filePath = "players.json";
+
         public MainWindow()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        public void DodajIgraca(object sender, RoutedEventArgs e)
+        public void LoadData()
         {
-            if (TxtIme != null)
+            if (File.Exists(filePath))
             {
-                string imeIgraca = TxtIme.Text;
-                int godineIgraca = int.Parse(TxtGodine.Text);
-                int minutazaIgraca = int.Parse(TxtMinutaza.Text);
-                int brojPoena = int.Parse(TxtPoeni.Text);
-                string imeKluba = TxtKlub.Text;
+                string jsonText = File.ReadAllText(filePath);
+                playerList = JsonSerializer.Deserialize<List<Player>>(jsonText) ?? new List<Player>();
 
-                Player player = new Player(imeIgraca,godineIgraca,minutazaIgraca,brojPoena,imeKluba);
+                RefreshPlayerList();
 
-                lisPlayer.Add(player);
-                ListaIgraca();
-                Ciscenje();
-
-                TxtNaslovListe.Visibility = Visibility.Visible;
-                LstIgraci.Visibility = Visibility.Visible;
+                if (playerList.Count > 0)
+                {
+                    TxtListTitle.Visibility = Visibility.Visible;
+                    LstPlayers.Visibility = Visibility.Visible;
+                }
             }
         }
 
-        public void ListaIgraca()
+        public void SaveData()
         {
-            LstIgraci.ItemsSource = null;
-            LstIgraci.ItemsSource = lisPlayer;
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonText = JsonSerializer.Serialize(playerList, options);
+            File.WriteAllText(filePath, jsonText);
         }
 
-        public void Ciscenje()
+        public void AddPlayer(object sender, RoutedEventArgs e)
         {
-            TxtIme.Clear();
-            TxtGodine.Clear();
-            TxtMinutaza.Clear();
-            TxtPoeni.Clear();
-            TxtKlub.Clear();
+            if (string.IsNullOrWhiteSpace(TxtName.Text))
+            {
+                MessageBox.Show("Please enter a player name!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string playerName = TxtName.Text;
+            int.TryParse(TxtAge.Text, out int playerAge);
+            int.TryParse(TxtMinutes.Text, out int playerMinutes);
+            int.TryParse(TxtPoints.Text, out int points);
+            string clubName = TxtClub.Text;
+
+            if (selectedPlayer == null)
+            {
+                BtnAdd.Content = "Add Player";
+                Player player = new Player(playerName, playerAge, playerMinutes, points, clubName);
+                playerList.Add(player);
+            }
+            else
+            {
+                selectedPlayer.PlayerName = TxtName.Text;
+                selectedPlayer.PlayerAge = playerAge;
+                selectedPlayer.PlayerMinutes = playerMinutes;
+                selectedPlayer.Points = points;
+                selectedPlayer.ClubName = TxtClub.Text;
+                BtnAdd.Content = "Add Player";
+            }
+
+            SaveData();
+            RefreshPlayerList();
+            ClearFields();
+
+            TxtListTitle.Visibility = Visibility.Visible;
+            LstPlayers.Visibility = Visibility.Visible;
         }
 
-        public void Brisanje(object sender, RoutedEventArgs e)
+        public void RefreshPlayerList()
+        {
+            LstPlayers.ItemsSource = null;
+            LstPlayers.ItemsSource = playerList;
+        }
+
+        public void ClearFields()
+        {
+            TxtName.Clear();
+            TxtAge.Clear();
+            TxtMinutes.Clear();
+            TxtPoints.Clear();
+            TxtClub.Clear();
+
+            selectedPlayer = null;
+            BtnAdd.Content = "Add Player";
+        }
+
+        public void DeletePlayer(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            Player igracZaBrisanje = btn?.DataContext as Player;
+            Player playerToDelete = btn?.DataContext as Player;
 
-            if (igracZaBrisanje != null)
+            if (playerToDelete != null)
             {
-                // Uklanjamo igrača iz naše liste
-                lisPlayer.Remove(igracZaBrisanje);
+                playerList.Remove(playerToDelete);
+                SaveData();
+                RefreshPlayerList();
 
-                // Osvježavamo prikaz u ListView-u
-                ListaIgraca();
-
-                // Ako je lista ostala prazna, ponovo sakrivamo naslov i tabelu
-                if (lisPlayer.Count == 0)
+                if (playerList.Count == 0)
                 {
-                    TxtNaslovListe.Visibility = Visibility.Collapsed;
-                    LstIgraci.Visibility = Visibility.Collapsed;
+                    TxtListTitle.Visibility = Visibility.Collapsed;
+                    LstPlayers.Visibility = Visibility.Collapsed;
                 }
+            }
+        }
+
+        public void UpdatePlayer(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            selectedPlayer = btn?.DataContext as Player;
+
+            if (selectedPlayer != null)
+            {
+                TxtName.Text = selectedPlayer.PlayerName;
+                TxtAge.Text = selectedPlayer.PlayerAge.ToString();
+                TxtMinutes.Text = selectedPlayer.PlayerMinutes.ToString();
+                TxtPoints.Text = selectedPlayer.Points.ToString();
+                TxtClub.Text = selectedPlayer.ClubName;
+                BtnAdd.Content = "Update";
             }
         }
     }
